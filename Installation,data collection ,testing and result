@@ -1,0 +1,49 @@
+Installation
+Clone the repository:
+
+git clone https://github.com/yourusername/portfolio-optimization-linprog.git
+Navigate to the project directory:
+]
+cd portfolio-optimization-linprog
+Install the required dependencies:
+
+pip install pandas numpy scipy
+Data Collection
+The data is collected from Yahoo Finance for the following stock tickers:
+
+
+tickers = [
+    "RELIANCE.NS","TCS.NS","HDFCBANK.NS","ICICIBANK.NS","HINDUNILVR.NS","INFY.NS","ITC.NS","SBIN.NS","BHARTIARTL.NS",
+    "BAJFINANCE.NS","LICNFNHGP.NS","LT.NS","KOTAKBANK.NS","HCLTECH.NS","ASIANPAINT.NS","ADANIENT.NS","AXISBANK.NS",
+    "MARUTI.NS","SUNPHARMA.NS","TITAN.NS","ULTRACEMCO.NS","BAJAJFINSV.NS","DMART.NS","ONGC.NS","WIPRO.NS","NESTLEIND.NS",
+    "NTPC.NS","TATAMOTORS.NS","M&M.NS","JSWSTEEL.NS","ADANIPORTS.NS","POWERGRID.NS","ADANIGREEN.NS","TATASTEEL.NS",
+    "COALINDIA.NS","HDFCLIFE.NS","HINDZINC.NS","BAJAJ-AUTO.NS","IOC.NS","SIEMENS.NS","SBILIFE.NS",
+    "HAL.NS","PIDILITIND.NS","TECHM.NS","GRASIM.NS","ADANIPOWER.NS","DLF.NS","VBL.NS","BRITANNIA.NS"]
+Historical data is collected for the period from August 21, 2018, to August 21, 2021, and from August 21, 2021, to August 21, 2023.
+
+Data Preprocessing
+Load Data: The historical prices are loaded into dataframes for each stock ticker.
+Combine Data: The adjusted close prices for all stocks are combined into a single dataframe and saved to CSV files (historical_prices.csv and Testing_data.csv).
+Calculate Returns: Daily returns are calculated from the adjusted close prices and saved to Returns1.csv.
+Portfolio Optimization
+Objective Function: The objective function is defined as the average of the returns for each stock.
+Constraints:
+The sum of the portfolio weights must be equal to 1.
+Additional constraints to ensure the returns are greater than a specified threshold.
+Linear Programming: The linprog function from scipy.optimize is used to find the optimal weights that maximize the Sharpe ratio.
+Testing and Evaluation
+Testing Data: The optimized portfolio is tested using historical data from August 21, 2021, to August 21, 2023.
+Calculate Portfolio Statistics:
+Mean Return
+Standard Deviation
+Sharpe Ratio
+Comparison: The optimized portfolio is compared to a naive equally weighted portfolio.
+Results
+The results are printed, showing the mean return, standard deviation, and Sharpe ratio for both the optimized and naive portfolios.
+
+Usage
+Run the script:
+
+python portfolio_optimization.py
+Review the results:
+The script will print the optimal weights for the portfolio and compare the performance metrics of the optimized portfolio against a naive equally weighted portfolio.
